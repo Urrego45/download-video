@@ -1,0 +1,53 @@
+<html>
+<head>
+  <meta charset="utf-8" lang="es">
+  <title>Descarga Video de Yotube usando el Modulo (pytube) con Python | pytube</title>
+</head>
+<body id="body">
+
+  <section class="content-video">
+    <h1>Descargar Video de Youtube con <br> <span> pytube </span> + FLASK y PYTHON    </h1>
+  </section>
+
+
+<form class="content-video" autocomplete="off">
+  <div class="search-local">
+    <div class="icon">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-youtube" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <rect x="3" y="5" width="18" height="14" rx="4" />
+        <path d="M10 9l5 3l-5 3z" />
+      </svg>
+    </div>
+  
+    <input type="url" name="urlVideo" id="urlVideo" placeholder="URL del video" autofocus="autofocus" required>
+    <button onclick="enviar(e)">Buscar Video</button>
+  </div>
+</form>
+
+<div id="vista-previa"></div>
+
+
+<script>
+
+const enviar = (e) => {
+  e.preventDefault()
+  const input = document.querySelector('#urlVideo');
+  var url = input.value.substring(32)
+  console.log(input.value);
+  console.log('probando', input.value);
+
+  console.log(url);
+
+  fetch(`http://localhost:8000/download/${url}`, {
+    method: 'POST',
+  }).then(() => {
+    console.log('funciona');
+  }).catch(e => {
+    console.log(e);
+  })
+}
+
+</script>
+</body>
+</html>
